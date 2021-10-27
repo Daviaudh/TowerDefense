@@ -3,6 +3,9 @@ using System.Collections.Generic;
 public class Tower : MonoBehaviour
 {
 
+    public int _value = 10;
+    private int value { get { return _value; } }
+
     public GameObject _upgrade = null;
     private GameObject upgrade { get { return _upgrade; } }
 
@@ -38,7 +41,7 @@ public class Tower : MonoBehaviour
             canShoot = false;
           Destroy(enemies[0].gameObject);
             enemies.RemoveAt(0);
-
+            GameManager.instance.AddGold(1);
         }
     }
 
@@ -49,24 +52,28 @@ public class Tower : MonoBehaviour
             return;
         }
 
-        Instantiate(upgrade, transform.position, transform.rotation);
-        Destroy(gameObject);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        Enemy enemy = other.GetComponent<Enemy>();
-        if(enemy != null)
+        if (GameManager.instance.gold < value)
         {
-            enemies.Add(enemy);
+            return;
+
         }
+
+        Instantiate(upgrade, transform.position, transform.rotation);
+        GameManager.instance.AddGold(-10);
+        Destroy(gameObject);
+
     }
 
-    private void OnTriggerExit(Collider other)
+    public void AddEnemy (Enemy enemy)
     {
-        Enemy enemy = other.GetComponent<Enemy>();
-        if (enemy != null)
-        {
-            enemies.Remove(enemy);
-        }
+        enemies.Add(enemy);
     }
+
+    public void RemoveEnemy(Enemy enemy)
+    {
+        enemies.Remove(enemy);
+
+    }
+
 }
+        

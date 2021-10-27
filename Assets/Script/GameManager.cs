@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    public int gold { get; set; } = 10;
     public enum GameState
     {
         PREPARATION,
@@ -45,5 +47,13 @@ public class GameManager : MonoBehaviour
                 break;
 
         }
+       
+        
+    }
+
+    public void AddGold(int value)
+    {
+        gold += value;
+        UIManager.instance.SetGold(gold);
     }
 }

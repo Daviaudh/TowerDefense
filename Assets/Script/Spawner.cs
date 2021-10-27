@@ -16,19 +16,16 @@ public class Spawner : MonoBehaviour
 
     private void Start()
     {
-        
+        InvokeRepeating("Spawn", 0, spawnTime);
     }
 
-    private void Update()
+    private void Spawn()
     {
-        currentSpawnTime += Time.deltaTime;
-        if(currentSpawnTime >= spawnTime)
-        {
-            currentSpawnTime = 0;
-            Vector3 randomPos = transform.position;
-            randomPos.x += Random.Range(-3, 0f);
+        Vector3 randomPos = transform.position;
+        randomPos.z += Random.Range(-3.0f, 3.0f);
 
-            Instantiate(ennemyPrefab, transform.position, transform.rotation);
-        }
+        Instantiate(ennemyPrefab, transform.position, transform.rotation);
     }
+
+    
 }
