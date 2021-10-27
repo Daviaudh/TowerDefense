@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb960fcc483de44ca2b8f3fed3ba563, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgrade: {fileID: 0}
+  _upgrade: {fileID: 4200366258418539915, guid: a12188e4109a30149a8cabd3c0f37040, type: 3}
   _fireRate: 0.1
 --- !u!136 &7552615468810385666
 CapsuleCollider:
