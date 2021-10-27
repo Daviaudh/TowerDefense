@@ -25,8 +25,8 @@ public class Spawner : MonoBehaviour
         if(currentSpawnTime >= spawnTime)
         {
             currentSpawnTime = 0;
-            Vector3 randomPos = Transform.position;
-            randomPos.x += Random.Range(-3,0f)
+            Vector3 randomPos = transform.position;
+            randomPos.x += Random.Range(-3, 0f);
 
             Instantiate(ennemyPrefab, transform.position, transform.rotation);
         }
